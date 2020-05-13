@@ -1,0 +1,30 @@
+package Easy;
+
+class Solution_108 {
+    int[] nums;
+
+    public TreeNode sortedArrayToBST(int[] nums) {
+        this.nums = nums;
+        return find(0, nums.length - 1);
+    }
+
+    // 使用数组nums中索引从left到right的元素创建BST
+    public TreeNode find(int left, int right) {
+        // 如果left>right,子树中不存在元素，返回空
+        if (left > right) {
+            return null;
+        }
+
+        // 找出中间元素
+        int mid = (left + right) / 2;
+
+        // 创建根节点
+        TreeNode root = new TreeNode(nums[mid]);
+        // 递归创建左子树
+        root.left = find(left, mid - 1);
+        // 递归创建右子树
+        root.right = find(mid + 1, right);
+
+        return root;
+    }
+}

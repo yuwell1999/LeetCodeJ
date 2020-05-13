@@ -1,0 +1,32 @@
+package Easy;
+
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+
+// 迭代法
+// 根节点入栈，每次从栈中取出一个节点，逆序把孩子节点入栈，保证下一个遍历的节点出现在栈顶
+class Solution_589 {
+    public List<Integer> preorder(Node root) {
+        LinkedList<Node> stack = new LinkedList<>();
+        LinkedList<Integer> output = new LinkedList<>();
+
+        if (root == null) {
+            return output;
+        }
+
+        stack.add(root);
+
+        while (!stack.isEmpty()) {
+            Node tmp_node = stack.pollLast();
+            output.add(tmp_node.val);
+
+            Collections.reverse(tmp_node.children);
+
+            for (Node i : tmp_node.children) {
+                stack.add(i);
+            }
+        }
+        return output;
+    }
+}

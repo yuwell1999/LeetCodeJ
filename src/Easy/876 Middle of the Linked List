@@ -1,0 +1,13 @@
+package Easy;
+
+class Solution_876 {
+    public ListNode middleNode(ListNode head) {
+        ListNode slow = head, fast = head;
+        while (fast != null && fast.next != null) {
+            // 快慢指针， 慢指针走一步，快指针走两步
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        return slow;
+    }
+}

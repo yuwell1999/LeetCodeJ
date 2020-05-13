@@ -1,0 +1,40 @@
+package Easy;
+
+import java.util.ArrayList;
+
+class Solution_557 {
+    public String[] split(String s) {
+        ArrayList<String> list = new ArrayList<>();
+        StringBuilder word = new StringBuilder();
+        for (int i = 0; i < s.length(); i++) {
+            // 逐字判断，不为空格就加入新词
+            if (s.charAt(i) != ' ') {
+                word.append(s.charAt(i));
+
+            } else {
+                list.add(word.toString());
+                word = new StringBuilder();
+            }
+        }
+        list.add(word.toString());
+        return list.toArray(new String[list.size()]);
+    }
+
+    public String reverse(String s) {
+        StringBuilder res = new StringBuilder();
+        for (int i = 0; i < s.length(); i++) {
+            // 头插法翻转每个单词
+            res.insert(0, s.charAt(i));
+        }
+        return res.toString();
+    }
+
+    public String reverseWords(String s) {
+        String[] str = split(s);
+        StringBuilder res = new StringBuilder();
+        for (String ss : str) {
+            res.append(reverse(ss) + " ");
+        }
+        return res.toString().trim();  // 去除头尾的空白符
+    }
+}

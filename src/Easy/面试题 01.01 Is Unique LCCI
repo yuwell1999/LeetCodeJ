@@ -1,0 +1,15 @@
+package Easy;
+
+import java.util.HashSet;
+import java.util.Set;
+
+class Solution_01_01 {
+    public boolean isUnique(String astr) {
+        Set<Character> s = new HashSet<>();
+
+        for (int i = 0; i < astr.length(); i++) {
+            s.add(astr.charAt(i));
+        }
+        return s.size() == astr.length();
+    }
+}

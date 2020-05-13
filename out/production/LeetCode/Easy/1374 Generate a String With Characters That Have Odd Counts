@@ -1,0 +1,20 @@
+package Easy;
+
+class Solution_1374 {
+    public String generateTheString(int n) {
+        String str = "";
+        if (n % 2 == 0) {
+            // 长度为偶数，str为n-1个a和1个b
+            for (int i = 0; i < n - 1; i++) {
+                str += 'a';
+            }
+            str += 'b';
+        } else {
+            // 否则n为奇数个
+            for (int i = 0; i < n; i++) {
+                str += 'n';
+            }
+        }
+        return str;
+    }
+}

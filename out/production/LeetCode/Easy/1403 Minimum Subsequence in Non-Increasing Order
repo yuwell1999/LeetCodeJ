@@ -1,0 +1,33 @@
+package Easy;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+class Solution_1403 {
+    int res = 0;
+
+    public List<Integer> minSubsequence(int[] nums) {
+        // 元素可跳跃
+        // 不需要维持相对顺序
+        ArrayList<Integer> list = new ArrayList<>();
+        int sum = 0;
+        int return_sum = 0;
+
+        Arrays.sort(nums);
+
+        for (int i : nums) {
+            sum += i;
+        }
+
+        for (int i = nums.length - 1; i >= 0; i--) {
+            list.add(nums[i]);
+            return_sum += nums[i];
+            // 已选择的和大于剩余部分和
+            if (return_sum > sum - return_sum) {
+                return list;
+            }
+        }
+        return list;
+    }
+}

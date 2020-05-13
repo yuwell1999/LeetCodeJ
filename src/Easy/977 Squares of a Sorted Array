@@ -1,0 +1,25 @@
+package Easy;
+
+class Solution_977 {
+    // 双指针
+    public int[] sortedSquares(int[] A) {
+        int[] ans = new int[A.length];
+
+        int start = 0;
+        int cur = A.length - 1, end = A.length - 1;
+        while (cur >= 0) {
+            int left = A[start] * A[start];
+            int right = A[end] * A[end];
+            if (left < right) {
+                // 从最大位开始装
+                ans[cur] = right;
+                end--;
+            } else {
+                ans[cur] = left;
+                start++;
+            }
+            cur--;
+        }
+        return ans;
+    }
+}
