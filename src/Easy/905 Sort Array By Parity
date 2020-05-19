@@ -1,0 +1,22 @@
+package Easy;
+
+class Solution_905 {
+    public int[] sortArrayByParity(int[] A) {
+        int first = 0, last = A.length - 1;
+
+        while (first < last) {
+            while (A[first] % 2 == 0 && first < last) {
+                first++;
+            }
+            while (A[last] % 2 == 1 && first < last) {
+                last--;
+            }
+
+            int tmp = A[first];
+            A[first++] = A[last];
+            A[last--] = tmp;
+        }
+
+        return A;
+    }
+}

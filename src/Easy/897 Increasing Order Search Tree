@@ -1,0 +1,25 @@
+package Easy;
+
+class Solution_897 {
+
+    TreeNode cur;
+
+    public TreeNode increasingBST(TreeNode root) {
+        TreeNode tmp = new TreeNode(0);
+        cur = tmp;
+        inOrder(root);
+        return tmp.right;
+    }
+
+    public void inOrder(TreeNode node) {
+        if (node == null) {
+            return;
+        }
+        inOrder(node.left);
+        node.left = null;
+        cur.right = node; // 本身作为上一个遍历到的节点的右孩子
+        cur = node;
+        inOrder(node.right);
+
+    }
+}
