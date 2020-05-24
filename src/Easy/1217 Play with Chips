@@ -1,0 +1,18 @@
+package Easy;
+
+class Solution_1217 {
+    public int minCostToMoveChips(int[] chips) {
+        // 移动两个位置不花费代价
+        // 分别统计奇数位和偶数位的个数
+        // 少的那个就要移动N次到多的那里
+        int odd = 0, even = 0;
+        for (int i = 0; i < chips.length; i++) {
+            if (chips[i] % 2 == 0) {
+                even++;
+            } else {
+                odd++;
+            }
+        }
+        return Math.min(odd, even);
+    }
+}
