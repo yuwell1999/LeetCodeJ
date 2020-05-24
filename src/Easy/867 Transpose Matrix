@@ -1,0 +1,15 @@
+package Easy;
+
+class Solution_867 {
+    public int[][] transpose(int[][] A) {
+        int col = A.length;
+        int row = A[0].length;
+        int[][] ans = new int[row][col];
+        for (int c = 0; c < col; c++) {
+            for (int r = 0; r < row; r++) {
+                ans[r][c] = A[c][r];
+            }
+        }
+        return ans;
+    }
+}
