@@ -3,8 +3,8 @@ package Easy;
 class Solution_852 {
     public int peakIndexInMountainArray(int[] A) {
         // 只有一个山峰
-        for(int i = 0;i<A.length-1;i++){
-            if(A[i]>A[i+1]){
+        for (int i = 0; i < A.length - 1; i++) {
+            if (A[i] > A[i + 1]) {
                 return i;
             }
         }

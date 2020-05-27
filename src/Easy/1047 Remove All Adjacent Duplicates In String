@@ -1,0 +1,19 @@
+package Easy;
+
+class Solution_1047 {
+    public String removeDuplicates(String S) {
+        StringBuilder sb = new StringBuilder();
+        int stack_len = 0;
+
+        for (char c : S.toCharArray()) {
+            if (stack_len != 0 && c == sb.charAt(stack_len - 1)) {
+                sb.deleteCharAt(stack_len - 1);
+                stack_len--;
+            } else {
+                sb.append(c);
+                stack_len++;
+            }
+        }
+        return sb.toString();
+    }
+}

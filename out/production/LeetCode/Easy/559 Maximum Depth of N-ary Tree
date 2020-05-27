@@ -17,10 +17,10 @@ class Solution_559 {
         while (!queue.isEmpty()) {
             int qsize = queue.size();
             maxDepth++;
-
+            // 每一层的节点全部出队列了，当层有新孩子节点全部入队，按照层数深度加1
             while (qsize > 0) {
                 qsize--;
-                Node tmp = queue.poll();
+                Node tmp = queue.poll();  // 当层节点全部清空
                 // 队列不为空，当前节点的孩子节点全部入队列
                 for (Node n : tmp.children) {
                     if (n != null) {
