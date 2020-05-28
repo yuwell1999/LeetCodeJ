@@ -1,0 +1,22 @@
+package Easy;
+
+class Solution_m57_2 {
+    public int[] twoSum(int[] nums, int target) {
+        int small_index = 0;
+        int big_index = nums.length - 1;
+        int[] pair = new int[2];
+
+        while (small_index != big_index) {
+            if (nums[big_index] + nums[small_index] > target) {
+                big_index--;
+            } else if (nums[big_index] + nums[small_index] < target) {
+                small_index++;
+            } else {
+                break;
+            }
+        }
+        pair[0] = nums[small_index];
+        pair[1] = nums[big_index];
+        return pair;
+    }
+}
