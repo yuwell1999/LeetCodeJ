@@ -1,0 +1,46 @@
+package Easy;
+
+import java.util.*;
+
+class Solution_107 {
+    public List<List<Integer>> levelOrderBottom(TreeNode root) {
+        Stack<List<Integer>> stack = new Stack<>();
+        List<List<Integer>> list = new ArrayList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
+
+        if (root == null) {
+            return list;
+        }
+
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            List<Integer> layer = new ArrayList<>();
+
+            int qsize = queue.size();
+            // 每一层的节点全部出队列了，当层有新孩子节点全部入队，按照层数深度加1
+            while (qsize > 0) {
+                qsize--;
+                TreeNode tmp = queue.poll();  // 当层节点全部清空
+                layer.add(tmp.val);
+                // 队列不为空，当前节点的孩子节点全部入队列
+
+                if (tmp.left != null) {
+                    queue.add(tmp.left);
+                }
+                if (tmp.right != null) {
+                    queue.add(tmp.right);
+                }
+                layer.add(tmp.left.val);
+                layer.add(tmp.right.val);
+            }
+
+            if (layer != null) {
+                stack.add(layer);
+            }
+        }
+
+        Collections.reverse(stack);
+        return stack;
+    }
+}

@@ -1,0 +1,29 @@
+package Easy;
+
+
+import java.util.HashSet;
+import java.util.Set;
+
+class Solution_m02_01 {
+    public ListNode removeDuplicateNodes(ListNode head) {
+        Set<Integer> set = new HashSet<>();
+
+        ListNode p = head;
+        if (head == null) {
+            return null;
+        }
+
+        set.add(head.val);
+
+        while (head.next != null) {
+            // set.add(head.val);
+            if (set.contains(head.next.val)) {
+                head.next = head.next.next;
+            } else {
+                set.add(head.next.val);
+                head = head.next;
+            }
+        }
+        return p;
+    }
+}

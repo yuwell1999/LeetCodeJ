@@ -1,0 +1,22 @@
+package Easy;
+
+class Solution_463 {
+    public int islandPerimeter(int[][] grid) {
+        // 如果为岛屿，增加四条边，如果上边有1或者左边有1，减去重叠的两条边
+        int ans = 0;
+        for (int row = 0; row < grid.length; row++) {
+            for (int col = 0; col < grid[0].length; col++) {
+                if (grid[row][col] == 1) {
+                    ans += 4;
+                    if (row - 1 >= 0 && grid[row - 1][col] == 1) {
+                        ans -= 2;
+                    }
+                    if (col - 1 >= 0 && grid[row][col - 1] == 1) {
+                        ans -= 2;
+                    }
+                }
+            }
+        }
+        return ans;
+    }
+}

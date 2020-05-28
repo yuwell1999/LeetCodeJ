@@ -1,0 +1,18 @@
+package Easy;
+
+class Solution_509 {
+    public int fib(int N) {
+        if (N <= 0) {
+            return 0;
+        } else if (N == 1 || N == 2) {
+            return 1;
+        } else {
+            int[] ans = new int[N + 1];
+            ans[0] = ans[1] = 1;
+            for (int i = 2; i <= N; i++) {
+                ans[i] = ans[i - 1] + ans[i - 2];
+            }
+            return ans[N - 1];
+        }
+    }
+}
