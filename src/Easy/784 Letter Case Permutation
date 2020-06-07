@@ -1,0 +1,40 @@
+package Easy;
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution_784 {
+    public List<String> letterCasePermutation(String S) {
+        // 如果下一个字符c是字母，将当前已遍历过的字符串全排列复制两份
+        // 在第一份每个字符串末尾加上小写，在另一份每个字符串末尾加上大写
+        // 如果下一个字符是数字，直接加到每个字符串末尾
+        ArrayList<StringBuilder> ans = new ArrayList<>();
+        ans.add(new StringBuilder());
+
+        for (char c : S.toCharArray()) {
+            int cnt = ans.size();
+            if (Character.isLetter(c)) {
+                for (int i = 0; i < cnt; i++) {
+                    // 复制一份
+                    // 先复制再添加，不然复制的是尾部已经添加新字符的
+                    ans.add(new StringBuilder(ans.get(i)));
+                    // 原来的字符串排列末尾添加小写
+                    ans.get(i).append(Character.toLowerCase(c));
+                    // 复制的字符串末尾添加大写
+                    ans.get(cnt + i).append(Character.toUpperCase(c));
+                }
+            } else { // 为数字，直接添加
+                for (int i = 0; i < cnt; i++) {
+                    ans.get(i).append(c);
+                }
+            }
+
+        }
+
+        ArrayList<String> res = new ArrayList<>();
+        for (StringBuilder sb : ans) {
+            res.add(sb.toString());
+        }
+        return res;
+    }
+}

@@ -1,0 +1,30 @@
+package Easy;
+
+class Solution_m08_03 {
+    int ans = -1;
+
+    public int findMagicIndex(int[] nums) {
+        // 有序数组;
+        binarySearch(nums, 0, nums.length - 1);
+        return ans;
+    }
+
+    public void binarySearch(int[] nums, int left, int right) {
+        if (left > right) {
+            return;
+        }
+
+        int mid = (left + right) / 2;
+
+        // 如果找到，在左侧数组寻找更优解
+        if (nums[mid] == mid) {
+            ans = mid;
+            binarySearch(nums, left, mid - 1);
+        } else {
+            binarySearch(nums, left, mid - 1);
+            if (ans == -1 || ans > right) {
+                binarySearch(nums, mid + 1, right);
+            }
+        }
+    }
+}
