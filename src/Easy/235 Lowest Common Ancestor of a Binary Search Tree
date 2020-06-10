@@ -1,0 +1,31 @@
+package Easy;
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ * int val;
+ * TreeNode left;
+ * TreeNode right;
+ * TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution_235 {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        TreeNode node = root;
+
+        // p为左子树，q为右子树
+        // 搜索节点比左右节点都大，在右子树迭代查询
+        while (node != null) {
+            if (p.val > node.val && q.val > node.val) {
+                node = node.right;
+            } else if (p.val < node.val && q.val < node.val) {
+                // 搜索节点比左右节点都小，在左子树迭代查询
+                node = node.left;
+            } else {
+                return node;
+            }
+        }
+
+        return null;
+    }
+}
