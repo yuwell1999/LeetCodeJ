@@ -1,0 +1,27 @@
+package Easy;
+
+class Solution_m21 {
+    public int[] exchange(int[] nums) {
+        int first = 0;
+        int last = nums.length - 1;
+        int tmp;
+
+        while (first < last) {
+            // 找到左边第一个偶数
+            while (first < last && nums[first] % 2 == 1) {
+                first++;
+            }
+            // 找到右边第一个奇数
+            while (first < last && nums[last] % 2 == 0) {
+                last--;
+            }
+
+            // 交换操作
+            tmp = nums[last];
+            nums[last] = nums[first];
+            nums[first] = tmp;
+        }
+
+        return nums;
+    }
+}
