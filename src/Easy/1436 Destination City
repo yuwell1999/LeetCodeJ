@@ -1,0 +1,35 @@
+package Easy;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+class Solution_1436 {
+    public String destCity(List<List<String>> paths) {
+        HashMap<String, String> hm = new HashMap<>();
+        Set<String> start = new HashSet<>();
+        Set<String> destination = new HashSet<>();
+
+        for (List l : paths) {
+            hm.put(l.get(0).toString(), l.get(1).toString());
+            // start.add(l.get(0).toString());
+            // destination.add(l.get(1).toString());
+        }
+
+//        for(String s:destination){
+//            if(!start.contains(s)){
+//                return s;
+//            }
+//        }
+        String from = paths.get(0).get(0);
+        while (true) {
+            if (!hm.containsKey(from)) {
+                return from;
+            } else {
+                from = hm.get(from);
+            }
+        }
+
+    }
+}

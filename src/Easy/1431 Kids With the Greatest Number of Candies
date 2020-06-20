@@ -1,0 +1,26 @@
+package Easy;
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution_1431 {
+    public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
+
+        int maxCadies = candies[0];
+        List<Boolean> isMax = new ArrayList<>();
+        //boolean []isMax = new boolean[candies.length];
+
+        for (int c : candies) {
+            if (c >= maxCadies) {
+                maxCadies = c;
+            }
+        }
+
+        for (int i = 0; i < candies.length; i++) {
+
+            boolean ismax = candies[i] + extraCandies >= maxCadies;
+            isMax.add(ismax);
+        }
+        return isMax;
+    }
+}
