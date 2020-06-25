@@ -1,0 +1,26 @@
+package Easy;
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution_1137 {
+    public int tribonacci(int n) {
+        // 初始化前三个数
+        List<Integer> list = new ArrayList<>() {{
+            add(0);
+            add(1);
+            add(1);
+        }};
+
+        // n最大为37，可采用数组优化空间
+        if (n <= 2) {
+            return list.get(n);
+        }
+
+        for (int i = 3; i <= n; i++) {
+            list.add(list.get(i - 1) + list.get(i - 2) + list.get(i - 3));
+        }
+
+        return list.get(n);
+    }
+}

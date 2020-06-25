@@ -1,0 +1,23 @@
+package Easy;
+
+class Solution_jz53_1 {
+    public int search(int[] nums, int target) {
+        //由于数组 numsnums 中元素都为整数，因此可以分别二分查找 targettarget 和 target - 1target−1 的右边界，将两结果相减并返回即可。
+        return helper(nums, target) - helper(nums, target - 1);
+    }
+
+    // helper()函数旨在查找数字tartar在数组numsnums中的插入点，且若数组中存在值相同的元素，则插入到这些元素的右边。
+    int helper(int[] nums, int target) {
+        int left = 0, right = nums.length - 1;
+        while (left <= right) {
+            int mid = (left + right) / 2;
+            if (nums[mid] <= target) { // 区间中值小于target，查找中值区间右侧
+                left = mid + 1;
+            } else {  // 区间中值大于target，查找中值区间左侧
+                right = mid - 1;
+            }
+        }
+
+        return left;
+    }
+}
