@@ -1,0 +1,38 @@
+package Easy;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution_1331 {
+    public int[] arrayRankTransform(int[] arr) {
+        int[] ans = new int[arr.length];
+        int[] sortArr = Arrays.copyOf(arr, arr.length);
+        int index = 1;
+
+        if (arr.length == 0) {
+            return arr;
+        }
+
+        Arrays.sort(sortArr);
+
+        Map<Integer, Integer> hm = new HashMap<>();
+
+//        for(int i =0;i< sortArr.length;i++){
+//            hm.put(sortArr[i],hm.getOrDefault(sortArr[i],0)+1);
+//        }
+        hm.put(sortArr[0], index);
+        for (int i = 1; i < sortArr.length; i++) {
+            if (sortArr[i] != sortArr[i - 1]) {
+                hm.put(sortArr[i], ++index);
+            }
+        }
+
+        for (int i = 0; i < ans.length; i++) {
+            ans[i] = hm.get(arr[i]);
+        }
+
+        return ans;
+
+    }
+}
