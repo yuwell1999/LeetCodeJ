@@ -25,9 +25,9 @@ class Solution_1189 {
         }
 
         // l和o出现了两次
-        l = l/2;
-        o = o/2;
+        l = l / 2;
+        o = o / 2;
 
-        return Math.min(Math.min(Math.min(b,a),Math.min(l,o)),n);
+        return Math.min(Math.min(Math.min(b, a), Math.min(l, o)), n);
     }
 }

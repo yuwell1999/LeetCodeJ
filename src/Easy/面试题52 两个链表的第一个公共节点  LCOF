@@ -9,19 +9,19 @@ class Solution_m52 {
         ListNode n1 = headA;
         ListNode n2 = headB;
 
-        while(n1!=n2){
+        while (n1 != n2) {
 //            n1 = n1!=null?n1.next:headB;
 //            n2 = n2!=null?n2.next:headA;
 
-            if(n1!=null){
+            if (n1 != null) {
                 n1 = n1.next;
-            }else{
+            } else {
                 n1 = headB;
             }
 
-            if(n2!=null){
+            if (n2 != null) {
                 n2 = n2.next;
-            }else{
+            } else {
                 n2 = headA;
             }
         }
