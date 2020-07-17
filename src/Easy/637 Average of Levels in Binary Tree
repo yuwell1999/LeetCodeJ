@@ -21,23 +21,25 @@ class Solution_637 {
         queue.add(root);
 
         while (!queue.isEmpty()) {
+            int qsize = queue.size();
+
             long sum = 0, cnt = 0;
-            Queue<TreeNode> tmp = new LinkedList<>();
+            //Queue<TreeNode> tmp = new LinkedList<>();
 
             // 一层遍历
-            while (!queue.isEmpty()) {
+            for (int i = 0; i < qsize; i++) {
                 TreeNode n = queue.remove();
                 sum += n.val;
                 cnt++;
                 if (n.left != null) {
-                    tmp.add(n.left);
+                    queue.add(n.left);
                 }
                 if (n.right != null) {
-                    tmp.add(n.right);
+                    queue.add(n.right);
                 }
             }
 
-            queue = tmp;
+            //queue = tmp;
             ans.add(sum * 1.0 / cnt);
         }
 
