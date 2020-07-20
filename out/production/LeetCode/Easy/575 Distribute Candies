@@ -1,0 +1,18 @@
+package Easy;
+
+import java.util.HashSet;
+import java.util.Set;
+
+class Solution_575 {
+    public int distributeCandies(int[] candies) {
+        // Hashset
+        // 元素放进HashSet里去重
+        // 去重后set大小小于数组大小的一半，返回set的大小；否则返回数组大小的一半
+        Set<Integer> set = new HashSet<>();
+        for (Integer c : candies) {
+            set.add(c);
+        }
+
+        return set.size() >= candies.length / 2 ? candies.length / 2 : set.size();
+    }
+}

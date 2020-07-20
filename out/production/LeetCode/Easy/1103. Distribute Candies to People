@@ -1,0 +1,43 @@
+package Easy;
+
+class Solution_1103 {
+
+    public int[] distributeCandies(int candies, int num_people) {
+    /* 暴力法
+        int[] queue = new int[num_people];
+        int index = 0;
+
+        while(candies!=0){
+            queue[index%num_people] += Math.min(candies,index+1);
+            candies -= Math.min(candies,index+1);
+            index ++;
+        }
+
+        return queue;
+    }
+    */
+
+
+        // 公式推导
+        // 完整礼物的份数
+        int completeNum = (int) (Math.sqrt(2 * candies + 0.25) - 0.5);
+        int remainingNum = (int) (candies - 0.5 * completeNum * (completeNum + 1));
+        int row = completeNum / num_people;
+        int col = completeNum % num_people;
+
+        int[] queue = new int[num_people];
+        for (int i = 0; i < num_people; i++) {
+            // 完整的礼物分发
+            queue[i] = ((i + 1) * row) + ((int) (row * (row - 1) * 0.5) * num_people);
+
+            // 最后一行的分发
+            if (i < col) {
+                queue[i] += i + 1 + row * num_people;
+            }
+        }
+
+        queue[col] += remainingNum;
+
+        return queue;
+    }
+}

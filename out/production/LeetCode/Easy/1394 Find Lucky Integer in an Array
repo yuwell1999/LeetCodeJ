@@ -1,0 +1,24 @@
+package Easy;
+
+import java.util.HashMap;
+
+class Solution_1394 {
+    public int findLucky(int[] arr) {
+        HashMap<Integer, Integer> hm = new HashMap<>();
+
+        // HashMap用于计数，key为数字，value为出现的次数
+        for (int i : arr) {
+            hm.put(i, hm.getOrDefault(i, 0) + 1);
+        }
+
+        int ans = -1;
+
+        for (int key : hm.keySet()) {
+            if (key == hm.get(key)) {
+                ans = Math.max(ans, key);
+            }
+        }
+
+        return ans;
+    }
+}

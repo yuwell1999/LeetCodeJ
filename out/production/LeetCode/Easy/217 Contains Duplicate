@@ -1,0 +1,16 @@
+package Easy;
+
+import java.util.HashSet;
+import java.util.Set;
+
+class Solution_217 {
+    public boolean containsDuplicate(int[] nums) {
+        Set<Integer> set = new HashSet<>();
+
+        for (Integer n : nums) {
+            set.add(n);
+        }
+
+        return nums.length > set.size();
+    }
+}

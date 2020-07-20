@@ -1,0 +1,32 @@
+package Easy;
+
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+
+class Solution_590 {
+    List<Integer> list = new LinkedList<>();
+    List<Node> stack = new LinkedList<>();
+
+    public List<Integer> postorder(Node root) {
+        if (root == null) {
+            return list;
+        }
+        Node tmp = root;
+        stack.add(tmp);
+
+        while (stack.size() > 0) {
+            // 后进先出
+            tmp = stack.remove(stack.size() - 1);
+            list.add(tmp.val);
+
+            for (Node n : tmp.children) {
+                stack.add(n);
+            }
+        }
+
+        Collections.reverse(list);
+
+        return list;
+    }
+}

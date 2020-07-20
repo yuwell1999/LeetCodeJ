@@ -1,0 +1,25 @@
+package Easy;
+
+import java.util.List;
+
+class Solution_m08_06 {
+    // 递归，分治
+    public void hanota(List<Integer> A, List<Integer> B, List<Integer> C) {
+        move(A.size(), A, B, C);
+    }
+
+    public void move(int n, List<Integer> A, List<Integer> B, List<Integer> C) {
+        // 只有一个盘子，直接把盘子从A移动到C
+        if (n == 1) {
+            C.add(A.remove(A.size() - 1));
+            return;
+        }
+
+        // 先把A上面的n-1个盘子从A移动到B
+        move(n - 1, A, C, B);
+        // 最大的盘子从A移动到C
+        C.add(A.remove(A.size() - 1));
+        // 先把B上面的n-1个盘子从B移动到C
+        move(n - 1, B, A, C);
+    }
+}

@@ -1,0 +1,48 @@
+package Easy;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ * int val;
+ * TreeNode left;
+ * TreeNode right;
+ * TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution_637 {
+    public List<Double> averageOfLevels(TreeNode root) {
+        List<Double> ans = new LinkedList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
+
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            int qsize = queue.size();
+
+            long sum = 0, cnt = 0;
+            //Queue<TreeNode> tmp = new LinkedList<>();
+
+            // 一层遍历
+            for (int i = 0; i < qsize; i++) {
+                TreeNode n = queue.remove();
+                sum += n.val;
+                cnt++;
+                if (n.left != null) {
+                    queue.add(n.left);
+                }
+                if (n.right != null) {
+                    queue.add(n.right);
+                }
+            }
+
+            //queue = tmp;
+            ans.add(sum * 1.0 / cnt);
+        }
+
+        return ans;
+    }
+}

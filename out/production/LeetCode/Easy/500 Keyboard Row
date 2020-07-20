@@ -1,0 +1,59 @@
+package Easy;
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution_500 {
+
+    public String[] findWords(String[] words) {
+        String[] lines = new String[]{
+                "qwertyuiop",
+                "asdfghjkl",
+                "zxcvbnm"
+        };
+
+        List<String> ans = new ArrayList<>();
+
+        if (words == null) {
+            return null;
+        }
+
+        for (String word : words) {
+            if (WordinLine(word.toLowerCase(), lines)) {
+                ans.add(word);
+            }
+        }
+
+        return ans.toArray(new String[ans.size()]);
+    }
+
+    public boolean WordinLine(String word, String[] lines) {
+        // 假设已经全部转成小写
+        // 记录首个字母出现的行号
+        boolean flag = true;
+        String row = null;
+
+        for (String line : lines) {
+            // line中有word
+            if (line.indexOf(word.charAt(0)) > -1) {
+                row = line;
+                break;
+            }
+        }
+
+        if (row == null) {
+            flag = false;
+            return flag;
+        }
+
+        // 判断word是否属于同一行
+        for (Character c : word.toCharArray()) {
+            if (row.indexOf(c) < 0) {
+                flag = false;
+                break;
+            }
+        }
+
+        return flag;
+    }
+}

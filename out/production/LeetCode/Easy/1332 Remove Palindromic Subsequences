@@ -1,0 +1,13 @@
+package Easy;
+
+class Solution_1332 {
+    public int removePalindromeSub(String s) {
+        if (s.equals("")) {
+            return 0;
+        } else if (s.equals(new StringBuilder(s).reverse().toString())) {
+            return 1;
+        } else {
+            return 2;
+        }
+    }
+}

@@ -1,0 +1,15 @@
+package Easy;
+
+class Solution_m05_07 {
+    public int exchangeBits(int num) {
+        // 0x55555555二进制位为0b01010101010101010101010101010101
+        int odd = num & 0x55555555;
+        // 0xaaaaaaaa二进制位为0b10101010101010101010101010101010
+        int even = num & 0xaaaaaaaa;
+
+        odd = odd << 1;
+        even = even >> 1;
+
+        return even | odd;
+    }
+}

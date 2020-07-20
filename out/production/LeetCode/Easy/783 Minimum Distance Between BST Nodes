@@ -1,0 +1,24 @@
+package Easy;
+
+class Solution_783 {
+    int pre, ans;
+
+    public int minDiffInBST(TreeNode root) {
+        pre = Integer.MAX_VALUE; // pre为当前节点的值
+        ans = Integer.MAX_VALUE;
+        dfs(root);
+        return ans;
+    }
+
+    public void dfs(TreeNode node) {
+        if (node == null) {
+            return;
+        }
+        dfs(node.left);
+        if (pre != Integer.MAX_VALUE) {
+            ans = Math.min(ans, node.val - pre);
+        }
+        pre = node.val;
+        dfs(node.right);
+    }
+}

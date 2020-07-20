@@ -1,0 +1,21 @@
+package Easy;
+
+import java.util.HashMap;
+import java.util.HashSet;
+
+class Solution_1207 {
+    public boolean uniqueOccurrences(int[] arr) {
+        HashMap<Integer, Integer> hm = new HashMap<>();
+        HashSet<Integer> hs = new HashSet<>();
+
+        for (Integer i : arr) {
+            hm.put(i, hm.getOrDefault(i, 0) + 1);
+        }
+
+        for (Integer each : hm.values()) {
+            hs.add(each);
+        }
+
+        return hm.values().size() == hs.size();
+    }
+}

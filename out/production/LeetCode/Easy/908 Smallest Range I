@@ -1,0 +1,16 @@
+package Easy;
+
+class Solution_908 {
+    public int smallestRangeI(int[] A, int K) {
+        int min = A[0], max = A[0];
+
+        for (int x : A) {
+            // 小的要尽可能变大
+            min = Math.min(min, x);
+            // 大的要尽可能变小
+            max = Math.max(max, x);
+        }
+        // 两者变化之后有重叠，直接返回0
+        return Math.max(0, max - min - 2 * K);
+    }
+}

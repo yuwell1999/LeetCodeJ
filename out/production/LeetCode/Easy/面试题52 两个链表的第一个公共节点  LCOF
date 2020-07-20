@@ -1,0 +1,31 @@
+package Easy;
+
+class Solution_m52 {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        //两个链表长度分别为L1+C、L2+C， C为公共部分的长度
+        // 第一个人走了L1+C步后，回到第二个人起点走L2步；第2个人走了L2+C步后，回到第一个人起点走L1步
+        // 当两个人走的步数都为L1+L2+C时就两个家伙就相遇了
+
+        ListNode n1 = headA;
+        ListNode n2 = headB;
+
+        while (n1 != n2) {
+//            n1 = n1!=null?n1.next:headB;
+//            n2 = n2!=null?n2.next:headA;
+
+            if (n1 != null) {
+                n1 = n1.next;
+            } else {
+                n1 = headB;
+            }
+
+            if (n2 != null) {
+                n2 = n2.next;
+            } else {
+                n2 = headA;
+            }
+        }
+
+        return n1;
+    }
+}

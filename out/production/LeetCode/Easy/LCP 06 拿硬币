@@ -1,0 +1,18 @@
+package Easy;
+
+class Solution_mlcp_06 {
+    public int minCount(int[] coins) {
+        int cnt = 0;
+
+        for (int c : coins) {
+            cnt += calc(c);
+        }
+
+        return cnt;
+    }
+
+    public int calc(int coin) {
+        return coin % 2 + coin / 2;
+    }
+
+}

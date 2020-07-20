@@ -1,0 +1,38 @@
+package Easy;
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ * int val;
+ * TreeNode left;
+ * TreeNode right;
+ * TreeNode(int x) { val = x; }
+ * }
+ */
+
+// 循环搜索： 当节点 rootroot 为空时跳出；
+// 当 p, qp,q 都在 rootroot 的 右子树 中，则遍历至 root.rightroot.right ；
+// 否则，当 p, qp,q 都在 rootroot 的 左子树 中，则遍历至 root.leftroot.left ；
+// 否则，说明找到了 最近公共祖先 ，跳出。
+// 返回值： 最近公共祖先 rootroot 。
+
+class Solution_m68_1 {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        // 确保p.val<q.val
+        if (p.val > q.val) {
+            TreeNode tmp = p;
+            p = q;
+            q = tmp;
+        }
+
+        while (root != null) {
+            if (root.val < p.val) {
+                root = root.right;
+            } else if (root.val > q.val) {
+                root = root.left;
+            } else break;
+        }
+
+        return root;
+    }
+}
