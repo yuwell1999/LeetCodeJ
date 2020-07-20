@@ -1,0 +1,35 @@
+package Easy;
+
+import java.util.LinkedList;
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ * int val;
+ * TreeNode left;
+ * TreeNode right;
+ * TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution_872 {
+    public boolean leafSimilar(TreeNode root1, TreeNode root2) {
+        LinkedList<Integer> list1 = new LinkedList<>();
+        LinkedList<Integer> list2 = new LinkedList<>();
+
+        dfs(root1, list1);
+        dfs(root2, list2);
+
+        return list1.equals(list2);
+    }
+
+    public void dfs(TreeNode t, LinkedList<Integer> list) {
+        if (t != null) {
+            if (t.left == null && t.right == null) {
+                list.add(t.val);
+            }
+
+            dfs(t.left, list);
+            dfs(t.right, list);
+        }
+    }
+}
