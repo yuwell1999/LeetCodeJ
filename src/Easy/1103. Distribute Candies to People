@@ -28,7 +28,7 @@ class Solution_1103 {
         int[] queue = new int[num_people];
         for (int i = 0; i < num_people; i++) {
             // 完整的礼物分发
-            queue[i] = (i + 1) * row + (int) (row * (row - 1) * 0.5) * num_people;
+            queue[i] = ((i + 1) * row) + ((int) (row * (row - 1) * 0.5) * num_people);
 
             // 最后一行的分发
             if (i < col) {

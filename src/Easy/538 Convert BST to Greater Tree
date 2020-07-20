@@ -1,0 +1,62 @@
+package Easy;
+
+class Solution_538 {
+    /*
+    public int sum = 0;
+
+    public TreeNode convertBST(TreeNode root) {
+        // 回溯
+        // 先递归右子树，递归回来更新总和和当前节点
+        // 然后递归左子树
+        if (root != null) {
+            convertBST(root.right);
+            sum += root.val;
+            root.val = sum;
+            convertBST(root.left);
+        }
+
+        return root;
+    }
+    */
+
+    public TreeNode getSuccessor(TreeNode node) {
+        TreeNode succ = node.right;
+        while (succ.left != null && succ.left != node) {
+            succ = succ.left;
+        }
+
+        return succ;
+    }
+
+    public TreeNode convertBST(TreeNode root) {
+        // 反序中序Morris遍历
+        int sum = 0;
+        TreeNode node = root;
+
+        while (node != null) {
+            // 如果没有右子树，可以遍历这个节点和遍历左节点
+            if (node.right == null) {
+                sum += node.val;
+                node.val = sum;
+                node = node.left;
+            }
+
+            // 存在右子树，至少有一个节点有大于当前节点的值，必须先遍历那个节点
+            else {
+                TreeNode succ = getSuccessor(node);
+
+                if (succ.left == null) {
+                    succ.left = node;
+                    node = node.right;
+                } else {
+                    succ.left = null;
+                    sum += node.val;
+                    node.val = sum;
+                    node = node.left;
+                }
+            }
+        }
+
+        return root;
+    }
+}
