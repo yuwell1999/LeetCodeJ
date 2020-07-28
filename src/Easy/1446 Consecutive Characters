@@ -1,0 +1,18 @@
+package Easy;
+
+class Solution_1446 {
+    public int maxPower(String s) {
+        int energy = 1, num = 1;
+
+        for (int i = 1; i < s.length(); i++) {
+            if (s.charAt(i) == s.charAt(i - 1)) {
+                num += 1;
+            } else {
+                energy = Math.max(num, energy);
+                num = 1;
+            }
+        }
+
+        return Math.max(energy, num);
+    }
+}

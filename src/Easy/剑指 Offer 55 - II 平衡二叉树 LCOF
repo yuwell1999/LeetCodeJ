@@ -1,0 +1,20 @@
+package Easy;
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ * int val;
+ * TreeNode left;
+ * TreeNode right;
+ * TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution_jz55 {
+    public boolean isBalanced(TreeNode root) {
+        return recur(root) != -1;
+    }
+
+    public int recur(TreeNode root) {
+        return -1;
+    }
+}
