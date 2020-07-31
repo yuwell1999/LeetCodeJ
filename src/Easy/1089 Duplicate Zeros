@@ -1,0 +1,33 @@
+package Easy;
+
+class Solution_1089 {
+    public void duplicateZeros(int[] arr) {
+        int toBeDrop = 0;
+        int len = arr.length - 1;
+
+        // 找到复写0的个数
+        for (int left = 0; left <= len - toBeDrop; left++) {
+            if (arr[left] == 0) {
+                // 边缘情况，该0不能被复写，达到数组容量上限
+                if (left == len - toBeDrop) {
+                    arr[len] = 0;
+                    len -= 1;
+                    break;
+                }
+                toBeDrop++;
+            }
+        }
+
+        int lastIndex = len - toBeDrop;
+
+        for (int i = lastIndex; i >= 0; i--) {
+            if (arr[i] == 0) {
+                arr[i + toBeDrop] = 0;
+                toBeDrop--;
+                arr[i + toBeDrop] = 0;
+            } else {
+                arr[i + toBeDrop] = arr[i];
+            }
+        }
+    }
+}

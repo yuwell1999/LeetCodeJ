@@ -1,0 +1,27 @@
+package Easy;
+
+class Solution_1184 {
+    public int distanceBetweenBusStops(int[] distance, int start, int destination) {
+        boolean isDestination = false;
+        int reverse = 0;
+        int non_reverse = 0;
+        int start1 = start;
+        int start2 = start;
+
+        while (true) {
+            if (start1 % distance.length == destination) {
+                break;
+            }
+            reverse += distance[start1++ % distance.length];
+        }
+
+        while (true) {
+            if ((start2 + distance.length) % distance.length == destination) {
+                break;
+            }
+            non_reverse += distance[(--start2 + distance.length) % distance.length];
+        }
+
+        return Math.min(reverse, non_reverse);
+    }
+}
