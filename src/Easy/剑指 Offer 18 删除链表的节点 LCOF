@@ -3,9 +3,9 @@ package Easy;
 /**
  * Definition for singly-linked list.
  * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
+ * int val;
+ * ListNode next;
+ * ListNode(int x) { val = x; }
  * }
  */
 class Solution_jz18 {
@@ -13,13 +13,13 @@ class Solution_jz18 {
         ListNode dummy = new ListNode(0);
         dummy.next = head;
 
-        if(head.val==val){
+        if (head.val == val) {
             return head.next;
         }
 
-        while(head!=null&&head.next!=null){ // 因为要执行head.next = head.next.next，要保证下一个节点的地址不为空
+        while (head != null && head.next != null) { // 因为要执行head.next = head.next.next，要保证下一个节点的地址不为空
             // 要暂存删除节点的上一节点
-            if(head.next.val==val){
+            if (head.next.val == val) {
                 head.next = head.next.next;
             }
             head = head.next;

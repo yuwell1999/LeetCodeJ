@@ -2,13 +2,13 @@ package Easy;
 
 class Solution_389 {
     public char findTheDifference(String s, String t) {
-        char diff=0;
+        char diff = 0;
 
-        for(char c:s.toCharArray()){
+        for (char c : s.toCharArray()) {
             diff ^= c;
         }
 
-        for(char c:t.toCharArray()){
+        for (char c : t.toCharArray()) {
             diff ^= c;
         }
 
