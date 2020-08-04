@@ -2,8 +2,8 @@ package Easy;
 
 class Solution_m16_07 {
     public int maximum(int a, int b) {
-        long c = a;
-        long d = b;
-        return (int) ((Math.abs(c - d) + c + d) / 2);
+        long c=a;
+        long d=b;
+        return (int)((Math.abs(c-d)+c+d)/2);
     }
 }

@@ -1,6 +1,6 @@
 package Easy;
 
-public class Solution_m03 {
+class Solution_m03 {
     public int findRepeatNumber(int[] nums) {
         int i = 0;
         while (i < nums.length) {

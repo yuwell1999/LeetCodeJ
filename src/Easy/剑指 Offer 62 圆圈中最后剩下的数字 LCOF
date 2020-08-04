@@ -2,13 +2,13 @@ package Easy;
 
 class Solution_j62 {
     public int lastRemaining(int n, int m) {
-        return josephRing(n, m);
+        return josephRing(n,m);
     }
 
-    public int josephRing(int n, int m) {
+    public int josephRing(int n,int m){
         int pos = 0;
-        for (int i = 2; i <= n; i++) {
-            pos = (pos + m) % i;
+        for(int i=2;i<=n;i++){
+            pos = (pos+m)%i;
         }
         return pos;
     }
