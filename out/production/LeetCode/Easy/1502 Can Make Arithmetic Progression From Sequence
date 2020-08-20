@@ -1,0 +1,17 @@
+package Easy;
+
+import java.util.Arrays;
+
+class Solution_1502 {
+    public boolean canMakeArithmeticProgression(int[] arr) {
+        Arrays.sort(arr);
+        boolean flag = true;
+        for (int i = 1; i < arr.length - 1; i++) {
+            if (arr[i] * 2 != arr[i - 1] + arr[i + 1]) {
+                flag = false;
+            }
+        }
+
+        return flag;
+    }
+}

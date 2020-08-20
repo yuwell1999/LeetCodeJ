@@ -1,0 +1,31 @@
+package Medium;
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ * int val;
+ * TreeNode left;
+ * TreeNode right;
+ * TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution_m04_10 {
+    public boolean checkSubTree(TreeNode t1, TreeNode t2) { // t1为大树，t2为小子树
+        if (t1 == null && t2 == null) {
+            return true;
+        }
+        if (t1 == null && t2 != null){
+            return false;
+        }
+        if (t1 != null && t2 == null) {
+            return false;
+        }
+
+        if (t1.val != t2.val) {
+            return checkSubTree(t1.left, t2) || checkSubTree(t1.right, t2);
+        }
+
+        return checkSubTree(t1.left, t2.left) && checkSubTree(t1.right, t2.right);
+
+    }
+}

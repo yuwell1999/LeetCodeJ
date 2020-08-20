@@ -1,0 +1,36 @@
+package Easy;
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ * int val;
+ * TreeNode left;
+ * TreeNode right;
+ * TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution_404 {
+    public int sumOfLeftLeaves(TreeNode root) {
+        return sumOfLeftLeavesHelper(root, false);
+    }
+
+    public int sumOfLeftLeavesHelper(TreeNode root, boolean flag) {
+        /**
+         * 使用标志位判断是左孩子还是右孩子
+         * 写递归函数手动递归左孩子
+         * 递归左孩子说明这个节点一定是左孩子
+         */
+        if (root == null) {
+            return 0;
+        }
+        int leave = 0;
+        if (flag && root.left == null && root.right == null) {
+            leave = root.val;
+        }
+
+        int left = sumOfLeftLeavesHelper(root.left, true);
+        int right = sumOfLeftLeavesHelper(root.right, false);
+
+        return leave + left + right;
+    }
+}

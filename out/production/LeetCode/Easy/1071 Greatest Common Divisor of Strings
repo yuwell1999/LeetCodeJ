@@ -1,0 +1,19 @@
+package Easy;
+
+class Solution_1071 {
+    public String gcdOfStrings(String str1, String str2) {
+        // 假设公因子为str
+        // str1有m个str，str2有n个str，连起来有m+n个str，且m+n个str和n+m个str是一样的
+        // str1+str2==str2+str1意味着有解，反之无解
+        // 确定有解的情况下，最优解是长度为gcd(str1.length,str2.length)的字符串
+        if(!(str1+str2).equals(str2+str1)){
+            return "";
+        }else{
+            return str1.substring(0,gcd(str1.length(),str2.length()));
+        }
+    }
+
+    public int gcd(int m,int n){
+        return n==0?m:gcd(n,m%n);
+    }
+}

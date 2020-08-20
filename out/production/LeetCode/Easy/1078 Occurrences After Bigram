@@ -1,0 +1,19 @@
+package Easy;
+
+import java.util.LinkedList;
+import java.util.List;
+
+class Solution_1078 {
+    public String[] findOcurrences(String text, String first, String second) {
+        List<String> list = new LinkedList<>();
+        String[] word = text.split(" ");
+
+        for (int i = 0; i < word.length - 2; i++) {
+            if (word[i].equals(first) && word[i + 1].equals(second)) {
+                list.add(word[i + 2]);
+            }
+        }
+
+        return list.toArray(new String[list.size()]);
+    }
+}

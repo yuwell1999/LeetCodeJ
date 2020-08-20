@@ -1,0 +1,26 @@
+package Easy;
+
+class Solution_485 {
+    public int findMaxConsecutiveOnes(int[] nums) {
+        int count = 0;
+        int maxNum = 0;
+
+        /**
+         * count记录1的数量
+         * maxNum记录当前最大1的数量
+         * 遇到1时，count++
+         * 否则遇到0时，count和maxNum比较，maxNum记录较大值
+         *     count=0
+         */
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == 1) {
+                count++;
+            } else {
+                maxNum = Math.max(maxNum, count);
+                count = 0;
+            }
+        }
+
+        return Math.max(maxNum, count);
+    }
+}

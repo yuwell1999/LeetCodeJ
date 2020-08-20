@@ -1,0 +1,19 @@
+package Easy;
+
+class Solution_1518 {
+    public int numWaterBottles(int numBottles, int numExchange) {
+//        int bottle = numBottles;
+//        int ans = numBottles;
+//        while(bottle>=numExchange){
+//            bottle -= numExchange;
+//            ans ++;
+//            bottle++;
+//        }
+//        return ans;
+        // 一开始一定可以喝到bottle=numBottles瓶酒，每次换酒意味着多一个空瓶，每次损失瓶子数量为numExchange-1 = e-1
+        // 找到最小的n使得b-n(e-1)<e
+        // n_min = floor((b-1)/(e-1)+1)
+        // 前提条件是b>=e,不然没有足够的瓶子去换酒
+        return numBottles >= numExchange ? (numBottles - numExchange) / (numExchange - 1) + 1 + numBottles : numBottles;
+    }
+}

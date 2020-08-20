@@ -1,0 +1,22 @@
+package Easy;
+
+class Solution_1317 {
+    public int[] getNoZeroIntegers(int n) {
+        String s1 = "", s2 = "";
+        int[] ans = new int[2];
+        for (int i = 1; i <= n / 2; i++) {
+            s1 = "";
+            s2 = "";
+
+            s1 += i;
+            s2 += n - i;
+
+            if (!s1.contains("0") && !s2.contains("0")) {
+                return new int[]{i, n - i};
+
+            }
+        }
+
+        return null;
+    }
+}

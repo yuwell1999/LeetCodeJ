@@ -1,0 +1,42 @@
+package Easy;
+
+import java.util.LinkedList;
+import java.util.List;
+
+class Solution_119 {
+    public List<Integer> getRow(int rowIndex) {
+//        List<Integer> rows = new ArrayList<>();
+//
+//        for (int i = 0; i <= rowIndex; i++) {
+//            List<Integer> tmp = new ArrayList<>();
+//
+//            for (int j = 0; j <= i; j++) {
+//                if (j == 0 || j == i) {
+//                    tmp.add(1);
+//                } else {
+//                    tmp.add(rows.get(j - 1) + rows.get(j));
+//                }
+//            }
+//
+//            rows = tmp;
+//        }
+//
+//        return rows;
+
+        // 排列组合求和
+        // 第i行第j个是C(i,j)
+        List<Integer> rows = new LinkedList<>();
+        for (int i = 0; i <= rowIndex; i++) {
+            rows.add(Calc(rowIndex, i));
+        }
+        return rows;
+    }
+
+    public int Calc(int N, int k) {
+        long result = 1;
+        for (int i = 1; i <= k; i++) {
+            result = result * (N - k + i) / i;
+        }
+        return (int) result;
+    }
+}
