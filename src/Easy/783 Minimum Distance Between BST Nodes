@@ -1,6 +1,10 @@
 package Easy;
 
 class Solution_783 {
+    /**
+     * 二叉搜索树中，中序遍历会将树中节点按照大小顺序输出
+     * 只需要遍历计算相邻数的差值，取其中最小值就可以了
+     */
     int pre, ans;
 
     public int minDiffInBST(TreeNode root) {
