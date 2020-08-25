@@ -1,6 +1,6 @@
 package Easy;
 
-class Solution {
+class Solution_jz10_2 {
     public int numWays(int n) {
         if (n == 0 || n == 1) {
             return 1;
