@@ -1,0 +1,21 @@
+package Easy;
+
+class Solution_409 {
+    public int longestPalindrome(String s) {
+        // 字符ASCII范围为0-128
+        int[] ans = new int[128];
+        for (char c : s.toCharArray()) {
+            ans[c]++;
+        }
+
+        int cnt = 0;
+        for (int i : ans) {
+            cnt += i % 2;
+        }
+        if (cnt == 0) {
+            return s.length();
+        } else {
+            return s.length() - cnt + 1;
+        }
+    }
+}
