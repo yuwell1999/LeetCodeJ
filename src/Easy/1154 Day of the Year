@@ -1,0 +1,35 @@
+package Easy;
+
+class Solution_1154 {
+    public int dayOfYear(String date) {
+        String[] dates = date.split("-");
+        int[] months = new int[]{31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+        int year = Integer.valueOf(dates[0]);
+        int month = Integer.valueOf(dates[1]);
+        int day = Integer.valueOf(dates[2]);
+
+        int cnt = 0;
+
+        // 处理月
+        for (int i = 0; i < month - 1; i++) {
+            cnt += months[i];
+        }
+
+//        if(month==2){
+//            return cnt+day;
+//        }
+
+        cnt += day;
+
+        if (isRunYear(year) && month > 2) {
+            cnt++;
+        }
+        //return !isRunYear(year)?cnt:cnt+1;
+        return cnt;
+    }
+
+    public boolean isRunYear(int year) {
+        return year % 400 == 0 || year % 4 == 0 && year % 100 != 0;
+    }
+}
