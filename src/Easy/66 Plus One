@@ -1,0 +1,21 @@
+package Easy;
+
+class Solution_66 {
+    public int[] plusOne(int[] digits) {
+        int len = digits.length;
+        for (int i = len - 1; i >= 0; i--) {
+            digits[i]++;
+            digits[i] %= 10;
+            if (digits[i] != 0) {
+                // 无需进位，直接返回
+                return digits;
+            }
+        }
+
+
+        // 若需要全部进位，上方代码不会返回，必定是全是9的情况进位，返回100……
+        digits = new int[len + 1];
+        digits[0] = 1;
+        return digits;
+    }
+}

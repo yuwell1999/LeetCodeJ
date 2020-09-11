@@ -1,0 +1,24 @@
+package Easy;
+
+class Solution_69 {
+    public int mySqrt(int x) {
+        // x[i+1] = 1/2 *(x[i] + C/x[i])
+        // 选择x[0]=C作为初值
+        if (x == 0) {
+            return x;
+        }
+
+        double C = x;
+        double x0 = x;
+
+        while (true) {
+            double xi = 0.5 * (x0 + C / x0);
+            if (Math.abs(x0 - xi) < 1e-7) {
+                break;
+            }
+            x0 = xi;
+        }
+
+        return (int) x0;
+    }
+}
