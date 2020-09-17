@@ -1,0 +1,61 @@
+package Easy;
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ * int val;
+ * TreeNode left;
+ * TreeNode right;
+ * TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public boolean hasPathSum(TreeNode root, int sum) {
+//        if (root == null) {
+//            return false;
+//        }
+//
+//        Queue<TreeNode> queNode = new LinkedList<>();
+//        Queue<Integer> queVal = new LinkedList<>();
+//
+//        queNode.offer(root);
+//        queVal.offer(root.val);
+//
+//        while (!queNode.isEmpty()) {
+//            TreeNode tmp = queNode.poll();
+//            int tmp_val = queVal.poll();
+//
+//            if (tmp.left == null && tmp.right == null) {
+//                if (tmp_val == sum) {
+//                    return true;
+//                }
+//                continue;
+//            }
+//
+//            if (tmp.left != null) {
+//                queNode.offer(tmp.left);
+//                queVal.offer(tmp.left.val + tmp_val);
+//            }
+//
+//            if (tmp.right != null) {
+//                queNode.offer(tmp.right);
+//                queVal.offer(tmp.right.val + tmp_val);
+//            }
+//
+//        }
+//
+//        return false;
+
+        if (root == null) {
+            return false;
+        }
+
+        // 递归到叶子节点，判断当前的val是否等于剩下的sum
+        if (root.left == null && root.right == null) {
+            return sum == root.val;
+        }
+
+        // 递归，sum减小
+        return hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val);
+    }
+}
