@@ -1,0 +1,38 @@
+package Easy;
+
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution_205 {
+    public boolean isIsomorphic(String s, String t) {
+        if (s.length() != t.length()) {
+            return false;
+        }
+
+        // A到B的映射
+        Map<Character, Character> table = new HashMap<>();
+
+        for (int i = 0; i <= s.length() - 1; i++) {
+            char c1 = s.charAt(i);
+            char c2 = t.charAt(i);
+
+//            if (table.containsKey(c1)) {
+//                if (table.get(c1) != c2) {
+//                    return false;
+//                }
+//            } else {
+//                table.put(c1, c2);
+//            }
+            if (table.get(c1) == null) { // A中元素未建立映射
+                if (table.containsValue(c2)) { // 若B中已有映射，则不匹配
+                    return false;
+                }
+                table.put(c1, c2); // 建立映射
+            } else if (table.get(c1) != c2) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}

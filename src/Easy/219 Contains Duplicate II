@@ -1,0 +1,27 @@
+package Easy;
+
+import java.util.HashSet;
+import java.util.Set;
+
+class Solution_219 {
+    public boolean containsNearbyDuplicate(int[] nums, int k) {
+        /*
+        维护一个哈希表，里面最多k个元素
+        出现重复值说明在k距离内存在重复元素
+        每次遍历一个元素将其放在hs中，如果hs大小大于k，移除前面的数字
+         */
+        Set<Integer> hs = new HashSet<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (hs.contains(nums[i])) {
+                return true;
+            }
+            hs.add(nums[i]);
+
+            if (hs.size() > k) {
+                hs.remove(nums[i - k]);
+            }
+        }
+
+        return false;
+    }
+}
