@@ -1,5 +1,8 @@
 package Easy;
 
+import java.util.Vector;
+import java.util.concurrent.CopyOnWriteArrayList;
+
 class Solution_26 {
     public int removeDuplicates(int[] nums) {
         if (nums.length == 0) {
