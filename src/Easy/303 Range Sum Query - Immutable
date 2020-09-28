@@ -1,0 +1,27 @@
+package Easy;
+
+import java.util.LinkedList;
+import java.util.List;
+
+class NumArray {
+    List<Integer> list = new LinkedList<>();
+
+    public NumArray(int[] nums) {
+        int tmp = 0;
+        list.add(tmp);
+        for (int i = 0; i < nums.length; i++) {
+            tmp += nums[i];
+            list.add(tmp);
+        }
+    }
+
+    public int sumRange(int i, int j) {
+        return list.get(j + 1) - list.get(i);
+    }
+}
+
+/**
+ * Your NumArray object will be instantiated and called as such:
+ * NumArray obj = new NumArray(nums);
+ * int param_1 = obj.sumRange(i,j);
+ */
