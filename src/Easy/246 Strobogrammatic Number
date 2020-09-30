@@ -1,0 +1,41 @@
+package Easy;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+class Solution_246 {
+    public boolean isStrobogrammatic(String num) {
+        Set<Character> no = new HashSet<Character>() {
+            {
+                add('2');
+                add('3');
+                add('4');
+                add('5');
+                add('7');
+            }
+        };
+
+        Map<Character, Character> map = new HashMap<Character, Character>() {
+            {
+                put('6', '9');
+                put('1', '1');
+                put('8', '8');
+                put('0', '0');
+                put('9', '6');
+            }
+        };
+
+        StringBuilder sb = new StringBuilder();
+
+        for (Character c : num.toCharArray()) {
+            if (no.contains(c)) {
+                return false;
+            }
+            sb.append(map.get(c));
+        }
+
+        return sb.reverse().toString().equals(num);
+    }
+}
