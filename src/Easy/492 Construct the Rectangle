@@ -1,0 +1,19 @@
+package Easy;
+
+class Solution_492 {
+    public int[] constructRectangle(int area) {
+        int s = (int) Math.sqrt(area);
+
+        if (s * s == area) {
+            return new int[]{s, s};
+        }
+
+        for (int i = s; i > 0; i--) {
+            if (area % i == 0) {
+                return new int[]{Math.max(i, area / i), Math.min(i, area / i)};
+            }
+        }
+
+        return null;
+    }
+}

@@ -1,0 +1,14 @@
+package Easy;
+
+class Solution_476 {
+    public int findComplement(int num) {
+        long full = 1;
+        while (full <= num) {
+            full <<= 1;
+        }
+
+        full -= 1; // 得到全是1的数
+
+        return (int) full ^ num;
+    }
+}
