@@ -1,0 +1,15 @@
+package Easy;
+
+class Solution_551 {
+    public boolean checkRecord(String s) {
+        int countA = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == 'A') {
+                countA++;
+            }
+        }
+
+        // A的个数小于2，且不存在连续两个LL
+        return countA < 2 && s.indexOf("LLL") < 0;
+    }
+}

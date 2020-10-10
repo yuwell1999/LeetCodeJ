@@ -1,0 +1,33 @@
+package Easy;
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ * int val;
+ * TreeNode left;
+ * TreeNode right;
+ * TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution_543 {
+    int ans=0;
+
+    public int diameterOfBinaryTree(TreeNode root) {
+        depth(root);
+        return ans;
+    }
+
+    public int depth(TreeNode node) {
+        if (node == null) {
+            return 0;
+        }
+
+        int L = depth(node.left);
+        int R = depth(node.right);
+
+        // 将每个节点的最大直径（左子树深度+右子树深度）与当前最大值比较并取最大值
+        ans = Math.max(ans, L + R);
+
+        return Math.max(L, R) + 1;
+    }
+}
