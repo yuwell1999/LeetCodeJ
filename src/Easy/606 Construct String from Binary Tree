@@ -1,0 +1,26 @@
+package Easy;
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ * int val;
+ * TreeNode left;
+ * TreeNode right;
+ * TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution_606 {
+    public String tree2str(TreeNode t) {
+        if (t == null) {
+            return "";
+        }
+        if (t.left == null && t.right == null) { // 没有孩子，不需要在节点后加上任何括号
+            return t.val + "";
+        }
+        if (t.right == null) { // 只有左孩子，在递归时，只需要在左孩子结果加上一层括号
+            return t.val + "(" + tree2str(t.left) + ")";
+        }
+
+        return t.val + "(" + tree2str(t.left) + ")(" + tree2str(t.right) + ")";
+    }
+}
