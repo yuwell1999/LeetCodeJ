@@ -1,0 +1,17 @@
+package Easy;
+
+import java.util.Arrays;
+
+class Solution_453 {
+    public int minMoves(int[] nums) {
+        Arrays.sort(nums);
+
+        int cnt = 0;
+
+        for (Integer i : nums) {
+            cnt += i - nums[0];
+        }
+
+        return cnt;
+    }
+}

@@ -1,0 +1,12 @@
+package Easy;
+
+class Solution_58 {
+    public int lengthOfLastWord(String s) {
+        s = s.trim();
+        String[] words = s.split(" ");
+
+        if (words.length == 1 && words.length == 0) {
+            return s.length();
+        } else return words[words.length - 1].length();
+    }
+}

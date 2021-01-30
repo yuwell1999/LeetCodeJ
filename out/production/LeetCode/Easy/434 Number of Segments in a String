@@ -1,0 +1,15 @@
+package Easy;
+
+class Solution_434 {
+    public int countSegments(String s) {
+        int cnt = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+            if ((i == 0 || s.charAt(i - 1) == ' ') && s.charAt(i) != ' ') {
+                cnt++;
+            }
+        }
+
+        return cnt;
+    }
+}

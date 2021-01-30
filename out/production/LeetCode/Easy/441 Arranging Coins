@@ -1,0 +1,8 @@
+package Easy;
+
+class Solution_441 {
+    public int arrangeCoins(int n) {
+        //return (int) Math.floor(Math.sqrt(2 * n + 0.25) - 0.5);
+        return (int)Math.floor(2*Math.sqrt(0.5*n+0.0625)-0.5);
+    }
+}

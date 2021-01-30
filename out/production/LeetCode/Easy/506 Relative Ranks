@@ -1,0 +1,35 @@
+package Easy;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution_506 {
+    public String[] findRelativeRanks(int[] nums) {
+        int[] tmp = nums.clone();
+        Arrays.sort(tmp);
+        String[] ans = new String[nums.length];
+
+        // 第一个放值，第二个放排名
+        Map<Integer, Integer> hm = new HashMap<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            hm.put(tmp[i], i);
+        }
+
+        for (int i = 0; i < ans.length; i++) {
+            int index = hm.get(nums[i]);
+            if (index == nums.length - 1) {
+                ans[i] = "Gold Medal";
+            } else if (index == nums.length - 2) {
+                ans[i] = "Silver Medal";
+            } else if (index == nums.length - 3) {
+                ans[i] = "Bronze Medal";
+            } else {
+                ans[i] = String.valueOf(nums.length - index);
+            }
+        }
+
+        return ans;
+    }
+}

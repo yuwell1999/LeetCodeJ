@@ -1,0 +1,45 @@
+package Easy;
+
+class Solution14 {
+    public String longestCommonPrefix(String[] strs) {
+//        int minLen = Integer.MAX_VALUE;
+//        for(int i = 0;i< strs.length;i++){
+//            if(strs[i].length()<minLen){
+//                minLen = strs[i].length();
+//            }
+//        }
+//
+//        int cnt = 0;
+//        StringBuffer sb = new StringBuffer();
+//
+//        for(int i=0;i<minLen;i++){
+//            for(int j = 0;j<strs.length-1;j++){
+//                if(strs[j].charAt(i)==strs[j+1].charAt(i)){
+//                    cnt++;
+//                }else{
+//                    break;
+//                }
+//            }
+//        }
+//
+//        return strs[0].substring(0,cnt+1);
+
+        if (strs == null || strs.length == 0) {
+            return "";
+        }
+
+        int len = strs[0].length();
+        int cnt = strs.length;
+
+        for (int i = 0; i < len; i++) { // 列遍历
+            char c = strs[0].charAt(i);
+            for (int j = 1; j < cnt; j++) {
+                if (i == strs[j].length() || strs[j].charAt(i) != c) { // 到末尾或者不相等
+                    return strs[0].substring(0, i);
+                }
+            }
+        }
+
+        return strs[0];
+    }
+}
