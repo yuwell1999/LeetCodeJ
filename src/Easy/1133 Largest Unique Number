@@ -1,0 +1,24 @@
+package Easy;
+
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution_1113 {
+    public static int largestUniqueNumber(int[] A) {
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for (int a : A) {
+            map.put(a, map.getOrDefault(a, 0) + 1);
+        }
+
+        int maxKey = Integer.MIN_VALUE;
+
+        for (int key : map.keySet()) {
+            if (key > maxKey && map.get(key) == 1) {
+                maxKey = key;
+            }
+        }
+
+        return maxKey == Integer.MIN_VALUE ? -1 : maxKey;
+    }
+}

@@ -1,0 +1,19 @@
+package Easy;
+
+import java.util.Arrays;
+
+class Solution_1196 {
+    public int maxNumberOfApples(int[] arr) {
+        Arrays.sort(arr);
+        int MAX_WEIGHT = 5000;
+
+        int count = 0;
+        for (int a : arr) {
+            if (MAX_WEIGHT > a) {
+                count++;
+                MAX_WEIGHT -= a;
+            }
+        }
+        return count;
+    }
+}
