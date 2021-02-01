@@ -1,0 +1,38 @@
+package Easy;
+
+class Solution_1013 {
+    public boolean canThreePartsEqualSum(int[] arr) {
+        int sum = 0;
+        for (int a : arr) {
+            sum += a;
+        }
+
+        if (sum % 3 != 0) {
+            return false;
+        }
+
+        int part = sum / 3;
+
+        int cur = 0, i = 0;
+        while (i < arr.length) {
+            cur += arr[i];
+            if (cur == part) {
+                break;
+            }
+            i++;
+        }
+        if (cur != part) {
+            return false;
+        }
+
+        int j = i + 1;
+        while (j + 1 < arr.length) {
+            cur += arr[j];
+            if (cur == part * 2) {
+                return true;
+            }
+            j++;
+        }
+        return false;
+    }
+}
