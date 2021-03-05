@@ -1,0 +1,21 @@
+package Easy;
+
+import java.util.LinkedList;
+import java.util.List;
+
+class Solution_1018 {
+    public List<Boolean> prefixesDivBy5(int[] A) {
+        long sum = 0;
+        List<Boolean> ans = new LinkedList<>();
+
+        for (int i : A) {
+            sum = sum * 2 + i;
+            sum = sum % 5;
+            if (sum % 5 == 0) {
+                ans.add(true);
+            } else ans.add(false);
+        }
+
+        return ans;
+    }
+}

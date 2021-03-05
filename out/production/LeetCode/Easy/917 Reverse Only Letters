@@ -1,0 +1,26 @@
+package Easy;
+
+import java.util.Stack;
+
+class Solution_917 {
+    public String reverseOnlyLetters(String S) {
+        Stack<Character> stack = new Stack<>();
+        StringBuilder sb = new StringBuilder();
+
+        for (Character c : S.toCharArray()) {
+            if (c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z') {
+                stack.push(c);
+            }
+        }
+
+        for (int i = 0; i < S.length(); i++) {
+            if (S.charAt(i) >= 'a' && S.charAt(i) <= 'z' || S.charAt(i) >= 'A' && S.charAt(i) <= 'Z') {
+                sb.append(stack.pop());
+            } else {
+                sb.append(S.charAt(i));
+            }
+        }
+
+        return sb.toString();
+    }
+}

@@ -1,0 +1,39 @@
+package Easy;
+
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ * int val;
+ * TreeNode left;
+ * TreeNode right;
+ * TreeNode() {}
+ * TreeNode(int val) { this.val = val; }
+ * TreeNode(int val, TreeNode left, TreeNode right) {
+ * this.val = val;
+ * this.left = left;
+ * this.right = right;
+ * }
+ * }
+ */
+class Solution_993 {
+    Map<Integer, Integer> depth = new HashMap<>();
+    Map<Integer, TreeNode> parents = new HashMap<>();
+
+    public boolean isCousins(TreeNode root, int x, int y) {
+        dfs(root, null);
+
+        return depth.get(x) == depth.get(y) && parents.get(x) != parents.get(y);
+    }
+
+    public void dfs(TreeNode node, TreeNode parent) {
+        if (node != null) {
+            depth.put(node.val, parent != null ? 1 + depth.get(parent.val) : 0);
+            parents.put(node.val, parent);
+            dfs(node.left, node);
+            dfs(node.right, node);
+        }
+    }
+}

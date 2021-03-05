@@ -1,0 +1,28 @@
+package Easy;
+
+class Solution_520 {
+    public boolean detectCapitalUse(String word) {
+        boolean flag = true;
+
+        // 先统计大写个数
+        int cnt = 0;
+        for (Character c : word.toCharArray()) {
+            if (c >= 'A' && c <= 'Z') {
+                cnt++;
+            }
+        }
+
+        if (cnt != word.length()) {
+            if (cnt == 1) {
+                if (word.charAt(0) < 'A' || word.charAt(0) > 'Z') {
+                    flag = false;
+                }
+            } else if (cnt == 0) {
+            } else {
+                flag = false;
+            }
+        }
+
+        return flag;
+    }
+}

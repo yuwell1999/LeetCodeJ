@@ -1,0 +1,17 @@
+package Easy;
+
+class Solution_88 {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        // 双指针 从后往前
+
+        int idx1 = m - 1, idx2 = n - 1;
+        int ptr = m + n - 1;
+
+        while (idx1 >= 0 && idx2 >= 0) {
+            nums1[ptr--] = nums1[idx1] > nums2[idx2] ? nums1[idx1--] : nums2[idx2--];
+        }
+
+        // nums2的idx2前面剩余部分全部直接拷贝到nums1中
+        System.arraycopy(nums2, 0, nums1, 0, idx2 + 1);
+    }
+}

@@ -1,0 +1,15 @@
+package Easy;
+
+class Solution_521 {
+    public int findLUSlength(String a, String b) {
+        if (a.equals(b)) {
+            // 两个字符串相同，没有特殊子序列
+            return -1;
+        }
+
+        // 假如长度相等且a不等于b，一个字符串一定不会是另一个字符串的子序列
+        // 长度不相等，可以把较长子序列看成是最长子序列
+        // 用max函数简化
+        return Math.max(a.length(), b.length());
+    }
+}

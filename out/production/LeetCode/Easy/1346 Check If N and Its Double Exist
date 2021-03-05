@@ -1,0 +1,29 @@
+package Easy;
+
+import java.util.Arrays;
+
+class Solution_1346 {
+    public boolean checkIfExist(int[] arr) {
+        Arrays.sort(arr);
+
+        int x_index = 0;
+        for (int double_index = 0; double_index < arr.length; double_index++) {
+            while (x_index < arr.length && arr[double_index] * 2 > arr[x_index]) {
+                x_index++;
+            }
+            if (x_index != arr.length && x_index != double_index && arr[double_index] * 2 == arr[x_index]) {
+                return true;
+            }
+        }
+        x_index = arr.length - 1;
+        for (int double_index = arr.length - 1; double_index >= 0; double_index--) {
+            while (x_index > -1 && arr[double_index] * 2 < arr[x_index]) {
+                x_index -= 1;
+            }
+            if (x_index != -1 && x_index != double_index && arr[double_index] * 2 == arr[x_index]) {
+                return true;
+            }
+        }
+        return false;
+    }
+}

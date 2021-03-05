@@ -1,0 +1,21 @@
+package Easy;
+
+import java.util.Arrays;
+
+class Solution_475 {
+    public static int findRadius(int[] houses, int[] heaters) {
+        Arrays.sort(houses);
+        Arrays.sort(heaters);
+
+        int i = 0;
+        int radius = 0;
+
+        for(int house:houses){
+            while(i<heaters.length-1&&Math.abs(heaters[i]-house) >= Math.abs(heaters[i+1]-house)){
+                i++;
+            }
+            radius = Math.max(Math.abs(heaters[i]-house),radius);
+        }
+        return radius;
+    }
+}

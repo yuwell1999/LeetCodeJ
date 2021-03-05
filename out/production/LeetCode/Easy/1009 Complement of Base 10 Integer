@@ -1,0 +1,9 @@
+package Easy;
+
+class Solution_1009 {
+    public int bitwiseComplement(int N) {
+        int n = (int) (Math.log(N) / Math.log(2)) + 1;
+
+        return N == 0 ? 1 : (int) Math.pow(2, n) - 1 - N;
+    }
+}

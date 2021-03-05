@@ -1,0 +1,34 @@
+package Easy;
+
+import java.util.HashSet;
+import java.util.Set;
+
+class Solution_243 {
+    public int shortestDistance(String[] words, String word1, String word2) {
+        /**
+         * 暴力
+         */
+        Set<Integer> pos_word1 = new HashSet<>();
+        Set<Integer> pos_word2 = new HashSet<>();
+
+        for (int i = 0; i < words.length; i++) {
+            if (words[i].equals(word1)) {
+                pos_word1.add(i);
+            } else if (words[i].equals(word2)) {
+                pos_word2.add(i);
+            }
+        }
+
+        int min = Integer.MAX_VALUE;
+
+        for (Integer d1 : pos_word1) {
+            for (Integer d2 : pos_word2) {
+                if (Math.abs(d1 - d2) < min) {
+                    min = Math.abs(d1 - d2);
+                }
+            }
+        }
+
+        return min;
+    }
+}

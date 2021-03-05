@@ -1,0 +1,13 @@
+package Easy;
+
+class Solution_231 {
+    public boolean isPowerOfTwo(int n) {
+        if(n==0){
+            return false;
+        }
+
+        long x = n;
+
+        return ((x-1)&x)==0;
+    }
+}

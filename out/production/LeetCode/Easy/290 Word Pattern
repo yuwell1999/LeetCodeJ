@@ -1,0 +1,45 @@
+package Easy;
+
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution_290 {
+    public boolean wordPattern(String pattern, String s) {
+        String[] ss = s.split(" ");
+
+        Map<Character, String> match = new HashMap<Character, String>();
+
+        if (ss.length != pattern.length()) {
+            return false;
+        }
+//        for (int i = 1; i < pattern.length(); i++) {
+//            if (match.containsValue(ss[i]) && !match.containsKey(pattern.charAt(i))) {
+//                return false;
+//            }
+//
+//            if (match.containsKey(pattern.charAt(i))) {
+//                if (!match.get(pattern.charAt(i)).equals(ss[i])) {
+//                    return false;
+//                } else {
+//                    match.put(pattern.charAt(i), ss[i]);
+//                }
+//            }
+//        }
+        for (int i = 0; i < ss.length; i++) {
+            if (!match.containsKey(pattern.charAt(i))) { // 没有映射
+                if (match.containsValue(ss[i])) { // 没有映射时候，ss已经被使用，不符合匹配
+                    // abba
+                    // dog dog dog dog
+                    return false;
+                }
+                match.put(pattern.charAt(i), ss[i]);
+            } else {
+                if (!match.get(pattern.charAt(i)).equals(ss[i])) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+}

@@ -1,0 +1,27 @@
+package Easy;
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ * int val;
+ * TreeNode left;
+ * TreeNode right;
+ * TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution_270 {
+    public int closestValue(TreeNode root, double target) {
+        int val = 0;
+        int closest = root.val;
+
+        while (root != null) {
+            val = root.val;
+            // 更新closest
+            closest = Math.abs(val - target) < Math.abs(closest - target) ? val : closest;
+            // 二分搜索
+            root = target < root.val ? root.left : root.right;
+        }
+
+        return closest;
+    }
+}
