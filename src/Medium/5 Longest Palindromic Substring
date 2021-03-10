@@ -34,8 +34,8 @@ class Solution_5 {
         }
 
         int start = 0, end = 0;
-        for (int i = 0; i < s.length(); i++) {
-            // 区份不同的中心
+        for (int i = 0; i < s.length(); i++) { // i表示扩散中心
+            // 区分不同的中心
             int l1 = expandAroundCenter(s, i, i);
             int l2 = expandAroundCenter(s, i, i + 1);
 
