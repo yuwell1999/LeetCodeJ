@@ -35,11 +35,13 @@ class Solution_5 {
 
         int start = 0, end = 0;
         for (int i = 0; i < s.length(); i++) {
+            // 区份不同的中心
             int l1 = expandAroundCenter(s, i, i);
             int l2 = expandAroundCenter(s, i, i + 1);
 
             int len = Math.max(l1, l2);
 
+            // 如果扩散中心变更之后字串长度边长，就更新子串
             if (len > end - start) {
                 start = i - (len - 1) / 2;
                 end = i + len / 2;
