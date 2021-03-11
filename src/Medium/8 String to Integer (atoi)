@@ -1,0 +1,62 @@
+package Medium;
+
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution_8 {
+    public int myAtoi(String s) {
+        // 有限自动机 DFA
+        Automation automation = new Automation();
+        int len = s.length();
+
+        for (int i = 0; i < len; i++) {
+            automation.get(s.charAt(i));
+        }
+        return (int) (automation.sign * automation.ans);
+    }
+}
+
+class Automation {
+    public int sign = 1;
+    public long ans = 0;
+
+    public String state = "start";
+    public Map<String, String[]> map = new HashMap<String, String[]>() {
+        {
+            // 放入的顺序依次为遇到 空、正负号、数字和其他值
+            put("start", new String[]{"start", "signed", "in_number", "end"});
+            put("signed", new String[]{"end", "end", "in_number", "end"});
+            put("in_number", new String[]{"end", "end", "in_number", "end"});
+            put("end", new String[]{"end", "end", "end", "end"});
+        }
+    };
+
+    public void get(char c) {
+        // 有限自动机状态更新
+        state = map.get(state)[getCol(c)];
+        // 读入下一个字符，直到到达下一个非数字字符或到达输入的结尾。字符串的其余部分将被忽略。
+        // 如 “42ab123”，最后得到的数字为42
+        if ("signed".equals(state)) {
+            sign = c == '+' ? 1 : -1;
+        } else {
+            if ("in_number".equals(state)) {
+                ans = ans * 10 + c - '0';
+                ans = sign == 1 ? Math.min(ans, Integer.MAX_VALUE) : Math.min(ans, -(long) Integer.MIN_VALUE);
+            }
+        }
+    }
+
+    // 对应放入的顺序依次为遇到 空、正负号、数字和其他值
+    public int getCol(char c) {
+        if (c == ' ') {
+            return 0;
+        }
+        if (c == '+' || c == '-') {
+            return 1;
+        }
+        if (Character.isDigit(c)) {
+            return 2;
+        }
+        return 3;
+    }
+}
