@@ -1,0 +1,26 @@
+package Medium;
+
+class Solution_11 {
+    public int maxArea(int[] height) {
+        // 感觉这个移动有点博弈论的味了
+        // 每次都移动自己最差的一边，虽然可能变得更差，但是总比不动（或者减小）强，动最差的部分可能找到更好的结果，但是动另一边总会更差或者不变
+        // 兄弟们，这不是题，这是人生，逃离舒适圈！！
+
+        // 由于容纳的水量是由 [两个指针指向的数字中较小值 * 指针之间的距离] 决定的
+        // 如果我们移动数字较大的那个指针，那么前者「两个指针指向的数字中较小值」不会增加，后者「指针之间的距离」会减小，那么这个乘积会减小。
+        // 因此，我们移动数字较大的那个指针是不合理的。因此，我们移动 数字较小的那个指针。
+
+        int left = 0, right = height.length - 1, ans = 0;
+        while (left < right) {
+            int area = Math.min(height[left], height[right]) * (right - left);
+
+            ans = Math.max(area, ans);
+            if (height[right] > height[left]) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+        return ans;
+    }
+}

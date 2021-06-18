@@ -1,0 +1,47 @@
+package Easy;
+
+import java.util.*;
+
+class Solution_819 {
+    public String mostCommonWord(String paragraph, String[] banned) {
+        paragraph += ".";
+
+        List<String> words = new LinkedList<>();
+        StringBuilder sb = new StringBuilder();
+        for (char c : paragraph.toCharArray()) {
+            if (Character.isLetter(c)) {
+                sb.append(Character.toLowerCase(c));
+            } else if (sb.length() > 0) {
+                String word = sb.toString();
+                words.add(word);
+                sb.setLength(0);
+            }
+        }
+
+        Map<String, Integer> count = new HashMap<>();
+        Set<String> set = new HashSet<>();
+
+        for (String ban : banned) {
+            set.add(ban);
+        }
+
+        for (String word : words) {
+            if (!set.contains(word)) {
+                count.put(word, count.getOrDefault(word, 0) + 1);
+            }
+        }
+
+        int maxCount = 0;
+        String most = "";
+        for (String s : count.keySet()) {
+            maxCount = Math.max(maxCount, count.get(s));
+        }
+
+        for (String s : count.keySet()) {
+            if (maxCount == count.get(s)) {
+                most = s;
+            }
+        }
+        return most;
+    }
+}
