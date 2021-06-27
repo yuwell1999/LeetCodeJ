@@ -1,0 +1,20 @@
+package Easy;
+
+import java.util.HashSet;
+import java.util.Set;
+
+class Solution_m01_04 {
+    public boolean canPermutePalindrome(String s) {
+        // 解法1
+        Set<Character> set  = new HashSet<>();
+        for(char c:s.toCharArray()){
+            if(set.contains(c)){
+                set.remove(c);
+            }else{
+                set.add(c);
+            }
+        }
+
+        return set.size()<=1;
+    }
+}

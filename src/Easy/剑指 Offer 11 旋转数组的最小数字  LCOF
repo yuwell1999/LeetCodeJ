@@ -1,0 +1,24 @@
+package Easy;
+
+class Solution_jz11 {
+    public int minArray(int[] numbers) {
+        // 考虑数组最后一个元素x
+        // 在最小值右侧的元素，它的值一定小于x
+        // 在最大值左侧的元素，它的值一定大于x
+        int low = 0;
+        int high = numbers.length - 1;
+
+        while (low < high) {
+            int pivot = low + (high - low) / 2;
+            if (numbers[pivot] < numbers[high]) {
+                high = pivot;
+            } else if (numbers[pivot] > numbers[high]) {
+                low = pivot + 1;
+            } else {
+                high--;
+            }
+        }
+
+        return numbers[low];
+    }
+}
