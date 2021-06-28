@@ -1,0 +1,72 @@
+package Medium;
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ * int val;
+ * ListNode next;
+ * ListNode() {}
+ * ListNode(int val) { this.val = val; }
+ * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution_143 {
+    public void reorderList(ListNode head) {
+        // 找到链表中点
+        // 反转右侧链表
+        // 合并左右链表
+        if (head == null) {
+            return;
+        }
+        ListNode mid = middleNode(head);
+        ListNode left = head;
+        ListNode right = mid.next;
+        // 切开链表
+        mid.next = null;
+        right = reverseLinkedList(right);
+        merge(left, right);
+    }
+
+    public ListNode middleNode(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+
+        // fast一次走两步，所以要判断fast.next.next!=null
+        while (fast.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        return slow;
+    }
+
+    public ListNode reverseLinkedList(ListNode node) {
+        ListNode prev = null;
+        ListNode cur = node;
+
+        while (cur != null) {
+            ListNode tmp = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = tmp;
+        }
+
+        return prev;
+    }
+
+    public void merge(ListNode left, ListNode right) {
+        ListNode l;
+        ListNode r;
+
+        while (left != null && right != null) {
+            l = left.next;
+            r = right.next;
+
+            left.next = right;
+            left = l;
+
+            right.next = left;
+            right = r;
+        }
+    }
+}
