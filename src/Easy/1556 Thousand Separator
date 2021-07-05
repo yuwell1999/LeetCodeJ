@@ -1,0 +1,20 @@
+package Easy;
+
+class Solution_1556 {
+    public String thousandSeparator(int n) {
+        int count = 0;
+        StringBuilder sb = new StringBuilder();
+        do {
+            int cur = n % 10;
+            n /= 10;
+            sb.append(cur);
+            count++;
+
+            if (count % 3 == 0 && n != 0) {
+                sb.append(".");
+            }
+        } while (n != 0);
+
+        return sb.reverse().toString();
+    }
+}

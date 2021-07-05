@@ -1,0 +1,32 @@
+package Easy;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
+class Solution_888 {
+    public int[] fairCanySwap(int[] aliceSizes, int[] bobSizes) {
+        // sumA-x+y = sumB+x-y
+        // x = y + (sumA-sumB)/2
+        int sumA = Arrays.stream(aliceSizes).sum();
+        int sumB = Arrays.stream(bobSizes).sum();
+
+        int delta = (sumA-sumB)/2;
+        Set<Integer> set = new HashSet<>();
+        for(Integer num: aliceSizes){
+            set.add(num);
+        }
+        int []ans = new int[2];
+
+        for(Integer y:bobSizes){
+            int x = y+delta;
+            if(set.contains(x)){
+                ans[0] = x;
+                ans[1] = y;
+                break;
+            }
+        }
+
+        return ans;
+    }
+}
